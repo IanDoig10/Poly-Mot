@@ -19,7 +19,6 @@ const wordTextArea       = document.querySelector('#wordTextArea');        // in
 const definitionTextArea = document.querySelector('#definitionTextArea');  // index.html
 const learnBtn           = document.querySelector('#learnBtn');            // index.html
 const randomBtn          = document.querySelector('#randomBtn');           // random.html
-
 /* --------------------------------
  1) Small utilities
 --------------------------------- */
@@ -104,6 +103,11 @@ function renderCards() {
     text.className = 'liTextSpan';
     text.textContent = card.word;
     li.appendChild(text);
+
+    const pNumber = document.createElement('p');         //ADD
+    pNumber.className ='p-number';
+    pNumber.textContent = Number(index +1);
+    li.appendChild(pNumber);
 
     const del = document.createElement('button');
     del.type = 'button';
@@ -258,6 +262,8 @@ function wireIndexPage() {
     definitionTextArea.value = '';
     wordTextArea.focus();
   });
+
+  
 }
 
 /* --------------------------------

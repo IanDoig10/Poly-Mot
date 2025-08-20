@@ -286,6 +286,13 @@ function wireCommon() {
     localStorage.removeItem('currentPage');
   });
 
+  // On every page load, sync localStorage to the actual URL:
+(function syncPageIndexFromURL() {
+  const path = window.location.pathname;
+  const name = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+  const i = Math.max(0, PAGES.indexOf(name));
+  localStorage.setItem('currentPage', String(i));
+})();
   // theme
   applyThemeFromStorage();
   darkModeToggle?.addEventListener('click', toggleTheme);
