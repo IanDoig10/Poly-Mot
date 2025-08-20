@@ -194,7 +194,7 @@ h1 a:hover{ background: color-mix(in srgb, var(--tint) 12%, transparent); }
 }
 .arrow{
   pointer-events:auto;
-  width: 46px; height: 46px;
+  min-width: 46px; min-height: 46px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
@@ -283,7 +283,7 @@ body:not(.dark-mode) .random-btn:hover{
 ------------------------------ */
 .ul-big-container{
   width: 100%;
-  max-height: 100%;
+  max-height: 41rem;
   display:flex; justify-content:center;
   padding: var(--space-6) var(--space-5);
 }
@@ -390,8 +390,8 @@ border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
   
   display: flex;
   text-align: center;
-  width: 20rem;
-  height: 20rem;
+  min-width: 20rem;
+  min-height: 20rem;
   /* border: white solid; */
   overflow-y: auto;
 }
@@ -404,6 +404,8 @@ border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
 .display-area2 {
   display: block;
   font-size: 1.5rem;
+   padding-left: 20rem;
+   padding-right: 20rem;
 
 }
 
@@ -437,4 +439,61 @@ opacity: 0.3;
   .textarea-div{ grid-template-columns: 1fr; }
   .nav-header,.nav-center{ padding: var(--space-3) var(--space-4); }
   #darkModeToggle{ top:16px; right:16px; }
+  .arrow-container {
+
+  gap: 2px;
+  
 }
+.ul-big-container {
+max-height: 30rem;
+}
+li .liTextSpan{
+min-height: 80px !important; 
+}
+.word-of-day-container{
+min-height: 10rem;
+ display: flex;
+  flex-direction: column;     
+  align-items: center;        
+  justify-content: center;    
+  text-align: center;
+  
+
+}
+p{
+  font-size: 1rem !important;
+  
+}
+.display-area2{
+  padding: 0;
+}
+
+}
+
+@media (max-height: 700px){
+.ul-big-container {
+max-height: 25rem;
+}
+li .liTextSpan{
+min-height: 80px !important; 
+}
+.word-of-day-container{
+min-height: 10rem;
+ display: flex;
+  flex-direction: column;     
+  align-items: center;        
+  justify-content: center;    
+  text-align: center;
+  
+
+}
+p{
+  font-size: 1rem !important;
+  
+}
+.display-area2{
+  padding: 0;
+}
+
+}
+

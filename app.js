@@ -248,9 +248,9 @@ function wireIndexPage() {
     }
   });
 
-  // add card
-  learnBtn.addEventListener('click', () => {
-    const word = wordTextArea.value.trim();
+  // Learn Btn function
+function learn(){
+  const word = wordTextArea.value.trim();
     const def  = definitionTextArea.value.trim();
     if (!word || !def) return;
 
@@ -261,7 +261,16 @@ function wireIndexPage() {
     wordTextArea.value = '';
     definitionTextArea.value = '';
     wordTextArea.focus();
-  });
+}
+  // add card
+  learnBtn.addEventListener('click', learn)
+
+  definitionTextArea.addEventListener('keydown', (e)=>{
+    if(e.key === "Enter" && e.shiftKey){
+      learn();
+      e.preventDefault();
+    }
+  })
 
   
 }
@@ -287,7 +296,7 @@ function wireCommon() {
   });
 
   // On every page load, sync localStorage to the actual URL:
-(function syncPageIndexFromURL() {
+(function syncPageIndexFromURL() {                                         //ADDED
   const path = window.location.pathname;
   const name = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
   const i = Math.max(0, PAGES.indexOf(name));
