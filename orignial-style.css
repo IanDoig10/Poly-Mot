@@ -1,0 +1,720 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+@font-face {
+font-family: "Excalifont";
+src: url(font/Excalifont-Regular.woff2) format("woff2");
+font-weight: normal;
+font-style: normal;
+}
+
+
+/*
+
+=================
+Variables
+=================
+
+*/
+
+:root {
+--transition: all 0.1s linear;
+--spacing: 0.1rem;
+
+--clr-primary-1: hsl(205, 86%, 17%);
+--clr-grey-3: hsl(209, 34%, 30%);
+--clr-primary-5: hsl(205, 78%, 60%);
+--clr-primary-8: hsl(205, 86%, 81%);
+--clr-grey-10: hsl(210, 36%, 96%);
+--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+--clr-white: #fff;
+--base-color: white;
+--base-variant: #e8e9ed;
+--text-color: #111528;
+--secondary-text: #232738;
+--primary-color: #3a435d;
+--accent-color: #0071ff;
+--hovering-blue-color:rgb(43, 130, 212);
+}
+
+/*
+
+=================
+GLOBAL CLASSES
+=================
+
+*/
+
+*,::after,::before {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body{
+font-family: "Excalifont","Roboto";
+}
+
+html, body {
+overflow-y: hidden;
+margin: 0;
+padding: 0;
+
+}
+
+
+h1{
+font-family: "Excalifont";
+font-weight: normal;
+color: var(--primary-color);
+opacity: 0.7;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+h1 a {
+color: var(--primary-color);
+font-size: 3rem;
+margin-left: 1rem;
+padding: 1.5rem;
+}
+
+a {
+text-decoration: none;
+}
+
+/*
+
+=================
+Dark Mode
+=================
+
+*/
+
+body {
+font-family: "Excalifont","Roboto" ;
+height: 100vh;
+background-color: var(--background-color);
+color: var(--text-color);
+
+}
+
+.dark-mode {
+--background-color: var(--text-color);
+}
+/* .dark-mode .nav-center {
+background-color: var(--background-color);
+} */
+.dark-mode {
+
+nav {
+background-color: var(--text-color);
+}
+h1 {
+color: var(--clr-grey-3);
+opacity: none;
+}
+
+#darkModeToggle svg:first-child {
+display: none;
+}
+#darkModeToggle svg:last-child {
+display: block;
+
+}
+#darkModeToggle {
+background-color:transparent;
+}
+}
+
+#darkModeToggle {
+height: 35px;
+width: 35x;
+padding: 0;
+border-radius: 50%;
+background-color: transparent;
+border: none;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 50px;
+right: 20px;
+cursor: pointer;
+
+}
+
+#darkModeToggle svg:last-child {
+display: none;
+}
+#darkModeToggle svg:first-child {
+fill: var(--primary-color);
+opacity: 0.7;
+}
+#darkModeToggle svg {
+fill: var(--primary-color);
+
+
+}
+
+#darkModeToggle svg:hover {
+fill: var(--hovering-blue-color);
+}
+
+/*
+
+=================
+Navbar
+=================
+
+*/
+
+nav {
+background: var(--clr-white);
+box-shadow: var(--light-shadow);
+position: relative;
+}
+
+.nav-header {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+
+}
+/* .nav-center{
+  position: relative;
+  border-radius: 40px;
+  background-color: hsl(205, 69%, 10%);
+  margin: 1rem;
+  box-shadow: var(--light-shadow);
+  width: 50rem;
+  
+} */
+
+/*
+
+===========================
+Arrows buttons 
+===========================
+
+*/
+
+.arrow-container  {
+/* position: relative; */
+position: fixed;
+bottom: 4rem;
+color: var(--hovering-blue-color);
+font-size: 3rem;
+
+
+}
+.arrow {
+border: none;
+width: 3.5rem;
+background-color: transparent;
+color: var(--primary-color);
+font-size: 3rem;
+cursor: pointer;
+transition: all 0.3s linear; 
+}
+
+.arrowLeft {
+margin-right: 5px;
+}
+.arrowRight {
+margin-left: 5px;
+}
+
+/*
+
+===========================
+THE Big Container
+===========================
+
+*/
+
+.big-container {
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+height: 100vh;
+width: 100vw;
+margin: 0;
+padding: 0;
+
+}
+
+/*
+
+===========================
+box divs
+===========================
+
+*/
+
+.boxes-container {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+height: 50%;
+margin-bottom: 15rem;
+}
+.textarea-div {
+position: relative;
+display: flex;
+justify-content: center;
+gap: 10px; 
+width: 90vw;
+height: 50%;
+}
+
+.btn-div {
+position: relative;
+display: flex;
+justify-content: center;
+margin-top: -4.5rem;
+}
+
+/*
+
+===========================
+textarea and button
+===========================
+
+*/
+
+textarea{
+position: relative;
+width: 50%;
+height: 50%;
+max-width: 50rem;
+font-size: 3rem;
+text-align: center;
+text-transform: capitalize;
+
+
+background-color: transparent;
+color: var(--primary-color);
+border-color: var(--secondary-text);
+border: 3px solid;
+
+resize: none;                    
+min-height: 30px;
+line-height: 135px;
+padding-right: 15px;
+padding-left: 15px;
+opacity: 0.7;
+}
+
+textarea::-webkit-scrollbar {
+width: 6px;
+
+
+}
+
+textarea::-webkit-scrollbar-track {
+background: transparent; 
+margin: 6px;
+
+
+}
+
+textarea::-webkit-scrollbar-button {
+display: none;
+height: 0;
+}
+
+textarea::-webkit-scrollbar-thumb {
+background-color: var(--primary-color);  
+border-radius: 10px;
+
+}
+
+::placeholder {
+color: var(--primary-color); 
+font-family: "Excalifont","Roboto";
+font-size: 2rem;
+position: relative;
+top: 50%;
+transform: translateY(-50%);
+}
+
+.learn-btn {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 3rem;
+width: 10rem;
+font-size: 2rem;
+cursor: pointer;
+
+background-color: transparent;
+color: var(--primary-color);
+border-color: var(--secondary-text);
+border: 3px solid;
+opacity: 0.7;
+font-family: "Excalifont","Roboto";
+}
+
+/*
+
+===========================
+Transitions
+===========================
+
+*/
+
+h1 a:hover {
+color: var(--clr-primary-5);
+padding-left: 1.5rem;
+}
+
+
+.arrow:hover {
+transform: scale(1.1);
+transition: all 0.3s linear;
+color: var(--hovering-blue-color); 
+}
+
+textarea:focus{
+outline: none;
+
+}
+.dark-mode .learn-btn:hover,
+.dark-mode .random-btn:hover {
+  background-color: var(--dark-hover);
+  border-color: var(--primary-color);
+  transition: background-color var(--transition);
+}
+
+.learn-btn:hover,
+.random-btn:hover {
+  background-color: var(--light-hover);
+  border-color: var(--primary-color);
+  transition: background-color var(--transition);
+}
+
+li:hover{
+transform: scale(1.01);
+border-color: var(--hovering-blue-color);
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/*
+
+=============
+=============
+
+PAGE 2
+
+=============
+=============
+
+*/
+
+/*
+
+=================
+Ul big container
+=================
+
+*/
+
+.ul-big-container{
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+/* height: 75%; */
+width: 100vw;
+margin-bottom: 19rem;
+
+}
+
+ul{
+position: relative;
+list-style-type: none;
+overflow-y: scroll;
+height: 62vh;
+width: 80%;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+
+}
+
+ul::-webkit-scrollbar {
+width: 6px;
+}
+
+ul::-webkit-scrollbar-track {
+background: transparent; 
+margin: 6px;
+}
+
+ul::-webkit-scrollbar-button {
+display: none;
+height: 0;
+}
+
+ul::-webkit-scrollbar-thumb {
+background-color: var(--primary-color);  
+border-radius: 10px;
+/* opacity: 0.7; */
+}
+
+/*
+
+==============
+li 
+==============
+
+*/
+
+
+li{
+position: relative;
+background-color: transparent;
+color: var(--primary-color);
+border-color: var(--secondary-text);
+border: 3px solid;
+opacity: 0.7;
+margin: 15px;
+text-align: center;
+
+transform: scale();
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+width: 85%;
+height: auto;
+min-height: 7rem;
+
+white-space: normal;
+display: block;                 /* no flex centering */
+padding: 7px 7px;        /* top/right/bottom/left – add real breathing room */
+box-sizing: border-box;         /* padding stays inside width */
+line-height: 1.32;              /* prevent ascender/descender clipping */
+overflow-y: auto;              
+overflow-x: hidden;             
+word-break: break-word; 
+text-align: justify; 
+
+/*text-align: justify;      stretches lines to align both sides 
+text-justify: inter-word;
+this puts the text to the lfet and straight
+*/
+}
+
+/*text inside li*/
+.liTextSpan {
+position: absolute;
+width: 80%;
+text-align: center;
+top: 40%;
+left: 50%;
+transform: translateY(-40%);
+transform: translateX(-50%);
+font-size: 21px;
+text-transform: capitalize;
+
+}
+/*scrollbar inside li */
+li::-webkit-scrollbar {
+width: 6px;
+}
+
+li::-webkit-scrollbar-track {
+background: transparent; 
+margin: 6px;
+}
+
+li::-webkit-scrollbar-button {
+display: none;
+height: 0;
+}
+
+li::-webkit-scrollbar-thumb {
+background-color: var(--primary-color);  
+border-radius: 10px;
+}
+
+/*
+
+==============
+delete button
+==============
+
+*/
+
+
+.deleteCardBtn {
+color: var(--primary-color); 
+height: 30px;
+cursor: pointer;
+position: absolute; /* when position: fixed; = the btn is hidden until I hover on the li and the y appear the same color as the text of the li and if I hover over the 3 dots then they appear sky blue*/
+right: 15px;
+top: 5px;
+background-color: transparent;
+border: none;
+font-size: 16px;
+}
+
+.deleteCardBtn:hover {
+color: var(--clr-primary-5); 
+
+}
+
+/*
+==============
+Edit .edit-input
+==============
+
+*/
+
+input{
+  border: none;
+  outline: none;  
+width: 85%;
+height: auto;
+min-height: 7rem;
+
+white-space: normal;
+display: block;                 /* no flex centering */
+padding: 7px 7px;        /* top/right/bottom/left – add real breathing room */
+box-sizing: border-box;         /* padding stays inside width */
+line-height: 1.32;              /* prevent ascender/descender clipping */
+overflow-y: auto;              
+overflow-x: hidden;             
+word-break: break-word; 
+text-align: justify; 
+text-justify: inter-word; 
+text-transform: capitalize;
+}
+.edit-input {
+    
+    padding: 1.25rem;
+    font-size: 24px;
+    font-family: "Excalifont";
+    background-color: transparent;
+    color: var(--primary-color);
+    text-align: center;
+    caret-color: var(--clr-primary-5) ;
+position: absolute;
+width: 80%;
+top: 0px;
+left: 50%;
+transform: translateY(-50%);
+transform: translateX(-50%);
+cursor: text;
+/* pointer-events: none; */
+}
+
+/* .liTextSpan,
+.edit-input {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+
+
+
+/*
+
+=============
+=============
+
+PAGE 3
+
+=============
+=============
+
+*/
+
+/*
+
+==============
+Random button
+==============
+
+*/
+
+.random-btn {
+height: 6rem;
+width: 20rem;
+font-size: 4rem;
+cursor: pointer;
+
+background-color: transparent;
+color: var(--primary-color);
+border-color: var(--secondary-text);
+border: 3px solid;
+margin-bottom: 20rem;
+
+}
+
+
+/*
+
+=============================================
+Responsiveness - when Width over 800px
+=============================================
+
+*/
+
+@media screen and (min-width: 800px) 
+{
+.nav-center {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
+.nav-header {
+padding: 0;
+}
+
+#darkModeToggle {
+height: 35px;
+width: 35px;
+padding: 0;
+border-radius: 50%;
+background-color: transparent;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 50px;
+right: 20px;
+margin-top: 0;
+}
+
+#darkModeToggle svg:last-child {
+display: none;
+}
+
+textArea::placeholder{
+font-size: 3rem;
+}
+
+ul{
+width: 70%;
+max-width: 70rem;
+
+}
+
+
+}
+
+

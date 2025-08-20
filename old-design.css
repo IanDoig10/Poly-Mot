@@ -1,0 +1,414 @@
+/* =================================================
+   Fonts
+================================================== */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
+
+@font-face {
+  font-family: "Excalifont";
+  src: url(font/Excalifont-Regular.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =================================================
+   Theme tokens (Light = default)
+================================================== */
+:root {
+  --transition: 0.1s linear;
+  --spacing: 0.1rem;
+
+  --clr-white: #fff;
+
+  /* light theme surface + text */
+  --background-color: #ffffff;
+  --text-color: #111528;
+
+  --secondary-text: #232738;
+  --primary-color: #3a435d;
+  --hovering-blue-color: rgb(43, 130, 212);
+
+  --clr-primary-5: hsl(205, 78%, 60%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+  --light-hover: rgba(214, 211, 211, 0.6);
+  --dark-hover: rgb(35, 39, 56, 0.3);;
+}
+
+/* Dark theme overrides (JS toggles .dark-mode on body) */
+.dark-mode {
+  /* set the dark surface & text explicitly */
+  --background-color: #0f1424; /* use your preferred dark navy */
+  --text-color: #e8e9ed;
+}
+
+/* =================================================
+   Base / Reset
+================================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  min-height: 100vh;
+  font-family: "Excalifont", "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  overflow-y: hidden; /* matches your layout behavior */
+}
+
+/* =================================================
+   Header / Brand / Nav
+================================================== */
+nav {
+  background-color: var(--background-color); /* follows theme */
+  box-shadow: var(--light-shadow);
+}
+
+.nav-header,
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: var(--background-color); /* keep in sync with theme */
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Excalifont";
+  font-weight: 400;
+  color: var(--primary-color);
+  opacity: 0.7;
+}
+
+h1 a {
+  margin-left: 1rem;
+  padding: 1.5rem;
+  font-size: 3rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+h1 a:hover {
+  color: var(--clr-primary-5);
+  transition: color var(--transition);
+}
+
+/* optional dark-mode tweak for title only */
+.dark-mode h1 { color: var(--clr-grey-3); opacity: 1; }
+
+/* =================================================
+   Dark Mode Toggle (moon/sun)
+================================================== */
+#darkModeToggle {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+
+  height: 35px;
+  width: 35px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#darkModeToggle svg { fill: var(--primary-color); }
+#darkModeToggle svg:hover { fill: var(--hovering-blue-color); }
+
+/* show only one icon at a time */
+#darkModeToggle svg:last-child { display: none; }
+.dark-mode #darkModeToggle svg:first-child { display: none; }
+.dark-mode #darkModeToggle svg:last-child  { display: block; }
+
+/* =================================================
+   Paging arrows (bottom)
+================================================== */
+.arrow-container {
+  position: fixed;
+  bottom: 4rem;
+  color: var(--hovering-blue-color);
+  font-size: 3rem;
+}
+
+.arrow {
+  width: 3.5rem;
+  border: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  font-size: 3rem;
+  cursor: pointer;
+  transition: transform 0.3s linear, color 0.3s linear;
+}
+
+.arrow:hover { transform: scale(1.1); color: var(--hovering-blue-color); }
+.arrowLeft  { margin-right: 5px; }
+.arrowRight { margin-left: 5px; }
+
+/* =================================================
+   Layout Containers
+================================================== */
+.big-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.boxes-container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+  height: 50%;
+  margin-bottom: 15rem;
+}
+
+.textarea-div {
+  display: flex;
+  justify-content: center;
+  width: 90vw;
+  height: 50%;
+  gap: 10px;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+  margin-top: -4.5rem;
+}
+
+/* =================================================
+   Textareas (index.html)
+================================================== */
+textarea {
+  width: 50%;
+  max-width: 50rem;
+  height: 50%;
+
+  font-size: 3rem;
+  text-align: center;
+  text-transform: capitalize;
+
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 3px solid var(--secondary-text);
+  opacity: 0.7;
+
+  resize: none;
+  min-height: 30px;
+  line-height: 135px;   /* your current vertical-centering approach */
+  padding: 0 15px;
+}
+
+textarea:focus { outline: none; }
+
+textarea::placeholder {
+  color: var(--primary-color);
+  font-family: "Excalifont", "Roboto";
+  font-size: 2rem;
+}
+
+/* textarea scrollbar */
+textarea::-webkit-scrollbar { width: 6px; }
+textarea::-webkit-scrollbar-track { background: transparent; margin: 6px; }
+textarea::-webkit-scrollbar-button { display: none; height: 0; }
+textarea::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* =================================================
+   Primary Buttons (index + random pages)
+================================================== */
+.learn-btn,
+.random-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 3rem;
+  width: 10rem;
+  font-size: 2rem;
+
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 3px solid var(--secondary-text);
+  opacity: 0.7;
+
+  cursor: pointer;
+  font-family: "Excalifont", "Roboto";
+}
+.dark-mode .learn-btn:hover,
+.dark-mode .random-btn:hover {
+  background-color: var(--dark-hover);
+  border-color: var(--primary-color);
+  transition: background-color var(--transition);
+}
+
+.learn-btn:hover,
+.random-btn:hover {
+  background-color: var(--light-hover);
+  border-color: var(--primary-color);
+  transition: background-color var(--transition);
+}
+
+/* Random page sizing */
+.random-btn {
+  height: 6rem;
+  width: 20rem;
+  font-size: 4rem;
+  margin-bottom: 20rem;
+}
+
+/* =================================================
+   Cards Page (cards.html)
+================================================== */
+.ul-big-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-bottom: 19rem;
+  height: 100vh;
+}
+
+/* the list */
+#cardsLibrary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80%;
+  height: 73vh;
+
+  list-style: none;
+  overflow-y: auto;
+}
+
+/* list scrollbar */
+#cardsLibrary::-webkit-scrollbar { width: 6px; }
+#cardsLibrary::-webkit-scrollbar-track { background: transparent; margin: 6px; }
+#cardsLibrary::-webkit-scrollbar-button { display: none; height: 0; }
+#cardsLibrary::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* a single card */
+#cardsLibrary li {
+  position: relative;
+  width: 85%;
+  min-height: 7rem;
+  padding: 7px;
+
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 3px solid var(--secondary-text);
+  opacity: 0.7;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease-in-out,
+              transform         0.3s ease-in-out,
+              box-shadow        0.3s ease-in-out;
+
+  white-space: normal;
+  word-break: break-word;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+  line-height: 1.32;
+  margin: 15px 0;
+}
+
+#cardsLibrary li:hover {
+  transform: scale(1.01);
+  border-color: var(--hovering-blue-color);
+  /* background-color: var(--dark-hover); */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* the text span we toggle (word/definition) */
+.liTextSpan {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 80%;
+  font-size: 21px;
+  text-transform: capitalize;
+  text-align: center;
+  transform: translate(-50%, -40%);
+}
+
+/* li scrollbar */
+li::-webkit-scrollbar { width: 6px; }
+li::-webkit-scrollbar-track { background: transparent; margin: 6px; }
+li::-webkit-scrollbar-button { display: none; height: 0; }
+li::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* per-card delete button (right/top) */
+.deleteCardBtn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.deleteCardBtn:hover { color: var(--clr-primary-5); }
+
+/* =================================================
+   Inline Edit Input (dblclick in li)
+================================================== */
+input.edit-input {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 80%;
+  padding: 1.25rem;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  font-family: "Excalifont";
+  font-size: 24px;
+  color: var(--primary-color);
+  text-align: center;
+  text-transform: capitalize;
+  caret-color: var(--clr-primary-5);
+
+  transform: translate(-50%, 0);
+}
+
+/* =================================================
+   Responsive
+================================================== */
+@media (min-width: 800px) {
+  textarea::placeholder { font-size: 3rem; }
+  #cardsLibrary { width: 70%; max-width: 70rem; }
+}
