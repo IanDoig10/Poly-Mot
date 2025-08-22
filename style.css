@@ -65,7 +65,7 @@ html,body{ height:100%;
 overflow-y: hidden; }
 
 body{
-  min-height:100vh;
+  min-height:100%;
   margin:0;
   background:var(--bg);
   color:var(--text);
@@ -160,7 +160,7 @@ h1 a:hover{ background: color-mix(in srgb, var(--tint) 12%, transparent); }
    Layout containers
 ------------------------------ */
 .big-container{
-  min-height: calc(100vh - 64px);
+  min-height: calc(100% - 64px);
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
   gap: var(--space-6);
@@ -283,21 +283,27 @@ body:not(.dark-mode) .random-btn:hover{
 ------------------------------ */
 .ul-big-container{
   width: 100%;
-  max-height: 41rem;
+  max-height: 42rem;
+  margin-top: 7rem;
+  margin-bottom: 0;
   display:flex; justify-content:center;
   padding: var(--space-6) var(--space-5);
+  /* z-index: 1; */
 }
 
 #cardsLibrary{
   
   width: min(820px, 92vw);
-  max-height: 72vh;
+  max-height: 40rem;
   overflow: auto;
   list-style:none;
   margin:0;
   padding: 0;
   display:flex; flex-direction:column; gap: 5px; /*var(--space-4) */
+  /* z-index: 2; */
 }
+
+
 
 /* Card item */
 #cardsLibrary li {
@@ -326,13 +332,112 @@ border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
 display: block;
 text-align: center;
 font-size: clamp(18px, 2.2vw, 22px);
-color: var(--text);
 min-height: 10px; 
+color: var(--text);
+
+
 }
 
 .liTextSpan::first-letter {
   text-transform: uppercase;
 }
+
+/* -----------------------------
+ Search Bar
+------------------------------ */
+
+.search-bar::placeholder {
+  color: var(--text);
+}
+
+.dark-mode .search-bar{
+position: absolute;
+top: 11rem;
+transform: translateY(50%);
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-1);
+min-height: 20px; 
+padding: 8px 15px  ;/* padding: var(--space-6); */
+text-align: center;
+font-size: 1rem;
+transition: transform var(--tr-fast), box-shadow var(--tr-fast), border-color var(--tr-fast);
+caret-color: white;
+width: 20rem;
+  color: var(--text);
+/* width: min(820px, 92vw); */
+
+
+}
+.search-bar{
+  position: absolute;
+top: 11rem;
+transform: translateY(50%);
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-1);
+min-height: 20px; 
+padding: 8px 15px  ;/* padding: var(--space-6); */
+text-align: center;
+font-size: 1rem;
+transition: transform var(--tr-fast), box-shadow var(--tr-fast), border-color var(--tr-fast);
+caret-color: black;
+width: 20rem;
+
+}
+
+.search-bar:hover{
+box-shadow: var(--shadow-2);
+border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
+}
+
+/* -----------------------------
+current suggestions ul
+------------------------------ */
+
+.current-suggestions{
+ position: absolute;
+ display: none;
+top: 13.6rem;
+
+background: var(--surface);
+border: 1px solid var(--border);
+
+box-shadow: var(--shadow-1);
+min-height: 20px;
+/* max-height: 150px; */
+padding: 8px 15px  ;/* padding: var(--space-6); */
+text-align: center;
+font-size: 1rem;
+transition: transform var(--tr-fast), box-shadow var(--tr-fast), border-color var(--tr-fast);
+caret-color: black;
+width: 18rem;
+list-style:none;
+overflow-y: scroll;
+}
+
+.suggestions-li{
+  width: 100%;
+  padding: 0;
+  cursor: default;
+}
+
+.suggestions-li:hover{
+ width: 100%;
+background: color-mix(in srgb, var(--tint) 12%, var(--surface));
+}
+
+
+
+.marked {
+   background-color: color-mix(in srgb, var(--tint) 15%, var(--surface));
+}
+.dark-mode .marked {
+   background-color: color-mix(in srgb, var(--tint) 22%, var(--surface));
+}
+
 
 
 /* Delete button (top-right) */
@@ -396,9 +501,16 @@ border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
   overflow-y: auto;
 }
 
+/* .wotd-h1 {
+   text-decoration: underline;
+   text-shadow: 2px 15px 5px rgba(0, 0, 0, 0.5); 
+  
+} */
+
 .display-area {
   font-size: 1.5rem;
   margin:0;
+  font-weight: bold;
   
 }
 .display-area2 {
@@ -410,7 +522,7 @@ border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
 }
 
 /* -----------------------------
- p Number
+ p Number for each li
 ------------------------------ */
 
 .p-number {
@@ -439,11 +551,7 @@ opacity: 0.3;
   .textarea-div{ grid-template-columns: 1fr; }
   .nav-header,.nav-center{ padding: var(--space-3) var(--space-4); }
   #darkModeToggle{ top:16px; right:16px; }
-  .arrow-container {
-
-  gap: 2px;
-  
-}
+  .arrow-container {gap: 2px;}
 .ul-big-container {
 max-height: 30rem;
 }
@@ -466,6 +574,12 @@ p{
 }
 .display-area2{
   padding: 0;
+}
+.dark-mode .search-bar{
+  width: 13rem;
+}
+.search-bar{
+  width: 13rem;
 }
 
 }

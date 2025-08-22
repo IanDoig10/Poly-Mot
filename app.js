@@ -19,6 +19,11 @@ const wordTextArea       = document.querySelector('#wordTextArea');        // in
 const definitionTextArea = document.querySelector('#definitionTextArea');  // index.html
 const learnBtn           = document.querySelector('#learnBtn');            // index.html
 const randomBtn          = document.querySelector('#randomBtn');           // random.html
+const searchBar          = document.querySelector('#searchBar');           // cards.html   //ADD
+const currentSuggestions = document.querySelector('#currentSuggestions');  // cards.html   //ADD
+
+
+
 /* --------------------------------
  1) Small utilities
 --------------------------------- */
@@ -97,6 +102,7 @@ function renderCards() {
     const li = document.createElement('li');
     li.className = 'card-item';
     li.dataset.index = String(index);
+    li.dataset.realIndex = String(index);
     li.dataset.showing = 'word';
 
     const text = document.createElement('span');
@@ -181,6 +187,7 @@ function wireCardsPage() {
     input.value = first.toUpperCase() + input.value.slice(1);
     input.setSelectionRange(start, end);
   }
+
 } 
 
     li.classList.add('editing');
@@ -218,6 +225,112 @@ function wireCardsPage() {
 
   // initial paint
   renderCards();
+
+
+
+                                        
+   
+
+//search bar logic
+searchBar.addEventListener('input', () => {                                 //ADD
+  
+const query = searchBar.value;
+
+    // const currentSuggArray = cards.map(card => card.word)
+    const maxLength = 7;
+   const filtered = cards.filter(item =>{
+      return item.word.toLowerCase().includes(query.toLowerCase());
+      });
+       
+    
+      //clear old suggestions
+    currentSuggestions.innerHTML = "";
+
+    // show the suggestions
+    currentSuggestions.style.display ='block';
+      
+if(filtered.length > maxLength){filtered.length = maxLength;}
+
+      filtered.forEach(element => {
+        let realIndex =cards.findIndex(item => item.word === element.word)
+        
+
+        const suggestion = document.createElement("li");
+        suggestion.className = ('suggestions-li');
+        suggestion.textContent = element.word;
+         suggestion.dataset.realIndex = realIndex; 
+        currentSuggestions.appendChild(suggestion);
+
+// finds the word easily
+function JumpToWord(){
+  const cardsContainer = document.querySelector("#cardsLibrary");
+
+        const realCard = cardsContainer.querySelector(`[data-real-index="${suggestion.dataset.realIndex}"]`);
+
+        realCard.scrollIntoView();
+        // console.log(suggestion.dataset.realIndex)
+        //  console.log(suggestion)
+        //  console.log(realCard.innerText)
+
+
+        const liTextSpan = realCard.querySelector('.liTextSpan');
+        const textNodeToReplace = liTextSpan.childNodes[0];
+
+        console.log('this is litextspan: ' + liTextSpan)
+        console.log('this is the childnode of litextspan: ' + liTextSpan.childNodes[0])
+        const newSpan = document.createElement('span');
+        newSpan.textContent = textNodeToReplace.textContent
+
+
+        textNodeToReplace.replaceWith(newSpan)
+        console.log('this is newSpan: ' + newSpan.textContent);
+
+
+        console.log('this is realcard: ' +realCard);
+
+        newSpan.classList.add('marked');
+        setTimeout(function(){newSpan.classList.remove('marked');}, 3000);
+        currentSuggestions.style.display ='none';
+        searchBar.value = "";
+}
+//event listener triggers jumpToWord function
+suggestion.addEventListener('click', JumpToWord) 
+       
+});
+
+// currentSuggestions.addEventListener("keydown")
+// currentSuggestions.addEventListener("keyup")
+// currentSuggestions.addEventListener("keydown", (e) => {
+//   if(e.key ==='Enter'){
+//   JumpToWord();
+//   }
+// })
+  
+// hide when clicking esc
+searchBar.addEventListener('keydown', (e) => {if(e.key === 'Escape'){
+currentSuggestions.style.display ='none'; 
+searchBar.value = "";
+}});
+
+// show when the input is interacted with
+searchBar.addEventListener('focus', () => {
+currentSuggestions.style.display = 'block';
+});
+
+// hide when clicking anywhere else
+document.addEventListener('pointerdown', (e) => {
+const inInput = e.target === searchBar || searchBar.contains(e.target); //the later stays for if i add an icon to the search bar
+const inList  = currentSuggestions.contains(e.target);
+
+if (!inInput && !inList) {
+currentSuggestions.style.display = 'none';
+searchBar.value = '';
+}
+});
+
+
+})
+  
 }
 
 /* --------------------------------
