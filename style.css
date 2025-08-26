@@ -160,6 +160,7 @@ h1 a:hover{ background: color-mix(in srgb, var(--tint) 12%, transparent); }
    Layout containers
 ------------------------------ */
 .big-container{
+  
   min-height: calc(100% - 64px);
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
@@ -541,6 +542,21 @@ opacity: 0.3;
   color: var(--tint);
   opacity: 1;
   cursor: default;
+}
+
+/* -----------------------------
+ good morning & current date
+------------------------------ */
+.good-morning {
+  position: absolute;
+  top: 12rem;
+ 
+}
+
+.current-date {
+  position: absolute;
+  top: 14.5rem;
+  opacity: 0.5;
 }
 
 

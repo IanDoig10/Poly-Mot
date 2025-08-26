@@ -21,7 +21,9 @@ const learnBtn           = document.querySelector('#learnBtn');            // in
 const randomBtn          = document.querySelector('#randomBtn');           // random.html
 const searchBar          = document.querySelector('#searchBar');           // cards.html   //ADD
 const currentSuggestions = document.querySelector('#currentSuggestions');  // cards.html   //ADD
-
+const date               = new Date();                                      // index.html   //ADD
+const dateString         = date.toDateString();                            // index.html   //ADD
+const currentDate        = document.querySelector('#currentDate');         // index.html   //ADD
 
 
 /* --------------------------------
@@ -37,8 +39,13 @@ function goTo(pageIndex) {
 
 function currentPageIndex() {
   return Number.parseInt(localStorage.getItem('currentPage') || '0', 10);// This function’s job is to get the saved page number from localStorage (which we stored earlier in goTo()), turn it into a number, and give it back.
-}                                                                       // What the 10 means: The 10 is the radix (base) for parseInt. parseInt(string, radix) tells JavaScript what number system to use. 10 means decimal (0–9 digits) — the normal numbers we use every day. 
-                                                                       
+}   
+// What the 10 means: The 10 is the radix (base) for parseInt. parseInt(string, radix) tells JavaScript what number system to use. 10 means decimal (0–9 digits) — the normal numbers we use every day. 
+    
+
+
+
+
 /* --------------------------------
  2) Theme (dark mode)
 --------------------------------- */
@@ -397,7 +404,8 @@ wordEl.addEventListener("change", async () => {
   defEl.value = def;
 });
 
-
+//current date
+currentDate.textContent = dateString;
 
 
   
@@ -504,6 +512,7 @@ return randomIndex;
 }
 
 randomBtn.addEventListener('click',getRandomWordAndDef)
+window.addEventListener('DOMContentLoaded',getRandomWordAndDef)
 
 
 
