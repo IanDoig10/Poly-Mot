@@ -330,7 +330,7 @@ border-color: color-mix(in srgb, var(--tint) 28%, var(--border));
 /* The text inside each card: center + wrap + grow */
 .liTextSpan{
 display: block;
-text-align: center;
+text-align: start;
 font-size: clamp(18px, 2.2vw, 22px);
 min-height: 10px; 
 color: var(--text);
@@ -352,7 +352,7 @@ color: var(--text);
 
 .dark-mode .search-bar{
 position: absolute;
-top: 11rem;
+top: 9rem;
 transform: translateY(50%);
 background: var(--surface);
 border: 1px solid var(--border);
@@ -371,8 +371,8 @@ width: 20rem;
 
 }
 .search-bar{
-  position: absolute;
-top: 11rem;
+  position: fixed;
+top: 9rem;
 transform: translateY(50%);
 background: var(--surface);
 border: 1px solid var(--border);
@@ -400,7 +400,7 @@ current suggestions ul
 .current-suggestions{
  position: absolute;
  display: none;
-top: 13.6rem;
+top: 11.6rem;
 
 background: var(--surface);
 border: 1px solid var(--border);
@@ -473,7 +473,7 @@ textarea.edit-input{
   color: var(--text);
   font: inherit;
   font-size: clamp(18px, 2.2vw, 22px);
-  text-align: center;
+  text-align: start;
   padding: 5px 35px;
   border-radius: var(--radius-lg);
 box-shadow: var(--shadow-1);
@@ -580,7 +580,23 @@ p{
 }
 .search-bar{
   width: 13rem;
+  top: 5.3rem;
+
 }
+.dark-mode .search-bar{
+  width: 13rem;
+  top: 5.3rem;
+}
+
+.current-suggestions{
+  width: 11.2rem;
+  top: 7.9rem;
+}
+.dark-mode .current-suggestions{
+  width: 11.2rem;
+  top: 7.9rem;
+}
+
 
 }
 
@@ -608,6 +624,8 @@ p{
 .display-area2{
   padding: 0;
 }
+
+
 
 }
 

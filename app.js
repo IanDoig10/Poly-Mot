@@ -226,11 +226,7 @@ function wireCardsPage() {
   // initial paint
   renderCards();
 
-
-
-                                        
-   
-
+                                      
 //search bar logic
 searchBar.addEventListener('input', () => {                                 //ADD
   
@@ -385,6 +381,25 @@ function learn(){
     }
   })
 
+//free dictionary api
+  const wordEl = document.getElementById("wordTextArea");
+const defEl  = document.getElementById("definitionTextArea");
+
+wordEl.addEventListener("change", async () => {
+  const word = wordEl.value.trim();
+  if (!word) return;
+
+  const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+  const data = await res.json();
+
+  // grab first definition
+  const def = data[0]?.meanings[0]?.definitions[0]?.definition || "No definition found.";
+  defEl.value = def;
+});
+
+
+
+
   
 }
 
@@ -493,5 +508,7 @@ randomBtn.addEventListener('click',getRandomWordAndDef)
 
 
 }
+
+
 
 
